@@ -1,9 +1,10 @@
-import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
-import ImagePreLoader from './ImageSliderPreLoader';
-import styles from './ImageSliderStyle';
+import React, { useEffect, useMemo, useRef, useState, useCallback } from 'react';
+
 import ImageSliderNavigation, { ImageSliderNavDirection, ImageSliderNavStyle } from './ImageSliderNavigation';
 import ImageSliderBullets from './ImageSliderBullets';
 import useSlideIndex from './hooks/useSlideIndex';
+import styles from './ImageSliderStyle';
+import ImagePreLoader from './ImageSliderPreLoader';
 
 export type SimpleImageSliderProps = {
   width: number | string;
@@ -28,6 +29,8 @@ export type SimpleImageSliderProps = {
   onStartSlide?: (idx: number, length: number) => void;
   onCompleteSlide?: (idx: number, length: number) => void;
 };
+
+newValue;
 
 const SimpleImageSlider: React.FC<SimpleImageSliderProps> = ({
   width,
