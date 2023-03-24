@@ -126,6 +126,7 @@ const App: React.FC = () => {
         navSize={sliderOptions.navSize}
         navMargin={sliderOptions.navMargin}
         slideDuration={sliderOptions.duration}
+        navigationColor={'white'}
         onClick={onClick}
         onClickNav={onClickNav}
         onClickBullets={onClickBullets}
