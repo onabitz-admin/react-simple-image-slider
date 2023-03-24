@@ -20,6 +20,7 @@ export declare type SimpleImageSliderProps = {
     navSize?: number;
     navMargin?: number;
     navStyle?: ImageSliderNavStyle;
+    navigationColor?: string;
     onClick?: (idx: number, event: React.SyntheticEvent) => void;
     onClickNav?: (toRight: boolean) => void;
     onClickBullets?: (idx: number) => void;

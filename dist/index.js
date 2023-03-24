@@ -22,6 +22,10 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
 
 var React = require('react');
 
+var ArrowBackIosIcon = require('@material-ui/icons/ArrowBackIos');
+
+var ArrowForwardIosIcon = require('@material-ui/icons/ArrowForwardIos');
+
 function _interopDefaultLegacy(e) {
   return e && _typeof(e) === 'object' && 'default' in e ? e : {
     'default': e
@@ -29,6 +33,10 @@ function _interopDefaultLegacy(e) {
 }
 
 var React__default = /*#__PURE__*/_interopDefaultLegacy(React);
+
+var ArrowBackIosIcon__default = /*#__PURE__*/_interopDefaultLegacy(ArrowBackIosIcon);
+
+var ArrowForwardIosIcon__default = /*#__PURE__*/_interopDefaultLegacy(ArrowForwardIosIcon);
 
 var ImageSliderPreLoader = function () {
   var loadedUrl = {};
@@ -75,8 +83,6 @@ var ImageSliderPreLoader = function () {
   };
 }();
 
-var img$1 = "data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' width='24' height='24' viewBox='0 0 24 24'%3e %3cdefs%3e %3cfilter id='0ls8o9a99a' width='168.9%25' height='218.6%25' x='-34.5%25' y='-59.3%25' filterUnits='objectBoundingBox'%3e %3cfeOffset in='SourceAlpha' result='shadowOffsetOuter1'/%3e %3cfeGaussianBlur in='shadowOffsetOuter1' result='shadowBlurOuter1' stdDeviation='2'/%3e %3cfeColorMatrix in='shadowBlurOuter1' values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.3 0'/%3e %3c/filter%3e %3cpath id='rs87bry78b' d='M19 7L20.413 8.414 11.707 17.12 2.999 8.414 4.413 7 11.707 14.291z'/%3e %3c/defs%3e %3cg fill='none' fill-rule='evenodd'%3e %3cg%3e %3cg%3e %3cg transform='translate(-24 -27) translate(24 27) rotate(90 11.707 12.06)'%3e %3cuse fill='black' filter='url(%230ls8o9a99a)' xlink:href='%23rs87bry78b'/%3e %3cuse fill='%23B3BB45' xlink:href='%23rs87bry78b'/%3e %3c/g%3e %3c/g%3e %3c/g%3e %3c/g%3e%3c/svg%3e";
-var img = "data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' width='24' height='24' viewBox='0 0 24 24'%3e %3cdefs%3e %3cfilter id='8utpkffr2a' width='171.8%25' height='232.4%25' x='-35.9%25' y='-66.2%25' filterUnits='objectBoundingBox'%3e %3cfeOffset in='SourceAlpha' result='shadowOffsetOuter1'/%3e %3cfeGaussianBlur in='shadowOffsetOuter1' result='shadowBlurOuter1' stdDeviation='2'/%3e %3cfeColorMatrix in='shadowBlurOuter1' values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.4 0'/%3e %3c/filter%3e %3cpath id='6inzdknobb' d='M20 6.999L20.707 7.706 12.354 16.06 4 7.706 4.707 6.999 12.354 14.646z'/%3e %3c/defs%3e %3cg fill='none' fill-rule='evenodd'%3e %3cg%3e %3cg%3e %3cg transform='translate(-67 -27) translate(67 27) rotate(90 12.354 11.53)'%3e %3cuse fill='black' filter='url(%238utpkffr2a)' xlink:href='%236inzdknobb'/%3e %3cuse fill='%23B3BB45' xlink:href='%236inzdknobb'/%3e %3c/g%3e %3c/g%3e %3c/g%3e %3c/g%3e%3c/svg%3e";
 var ImageSliderNavStyle;
 
 (function (ImageSliderNavStyle) {
@@ -91,22 +97,21 @@ var ImageSliderNavDirection;
   ImageSliderNavDirection["RIGHT"] = "right";
 })(ImageSliderNavDirection || (ImageSliderNavDirection = {}));
 
-var altNavArrowLeft = 'slide to left';
-var altNavArrowRight = 'slide to right';
-
 var ImageSliderNavigation = function ImageSliderNavigation(props) {
   return React__default['default'].createElement(React__default['default'].Fragment, null, props.visible && React__default['default'].createElement("button", {
     type: "button",
     style: styles.getNavStyle(props.direction, props.size, props.margin),
     onClick: props.onClickNav(props.direction)
-  }, React__default['default'].createElement("img", {
-    src: props.type === ImageSliderNavStyle.NORMAL ? img : img$1,
-    style: _objectSpread({
-      width: '100%'
-    }, props.direction === ImageSliderNavDirection.RIGHT && {
-      transform: 'rotate(180deg)'
-    }),
-    alt: props.direction === ImageSliderNavDirection.LEFT ? altNavArrowLeft : altNavArrowRight
+  }, props.direction === ImageSliderNavDirection.RIGHT ? React__default['default'].createElement(ArrowForwardIosIcon__default['default'], {
+    fontSize: 'large',
+    style: {
+      color: props.color
+    }
+  }) : React__default['default'].createElement(ArrowBackIosIcon__default['default'], {
+    fontSize: 'large',
+    style: {
+      color: props.color
+    }
   })));
 };
 
@@ -223,7 +228,8 @@ var ImageSliderBullets = function ImageSliderBullets(_ref) {
   var visible = _ref.visible,
       length = _ref.length,
       currentIdx = _ref.currentIdx,
-      onClickBullets = _ref.onClickBullets;
+      onClickBullets = _ref.onClickBullets,
+      bltColor = _ref.bltColor;
   return React__default['default'].createElement(React__default['default'].Fragment, null, visible && length > 0 && React__default['default'].createElement("div", {
     style: styles.getBulletContainer(length)
   }, Array.from(Array(length).keys()).map(function (idx) {
@@ -231,7 +237,9 @@ var ImageSliderBullets = function ImageSliderBullets(_ref) {
       key: "bullet-".concat(idx),
       type: "button",
       "data-id": "bullet-".concat(idx),
-      style: idx === currentIdx ? styles.BulletActive : styles.BulletNormal,
+      style: idx === currentIdx ? _objectSpread(_objectSpread({}, styles.BulletActive), {}, {
+        background: bltColor
+      }) : styles.BulletNormal,
       onClick: function onClick() {
         return onClickBullets(idx);
       }
@@ -335,6 +343,8 @@ var SimpleImageSlider = function SimpleImageSlider(_ref3) {
       navMargin = _ref3$navMargin === void 0 ? 30 : _ref3$navMargin,
       _ref3$navStyle = _ref3.navStyle,
       navStyle = _ref3$navStyle === void 0 ? ImageSliderNavStyle.NORMAL : _ref3$navStyle,
+      _ref3$navigationColor = _ref3.navigationColor,
+      navigationColor = _ref3$navigationColor === void 0 ? '#FFFFFF' : _ref3$navigationColor,
       _ref3$onClick = _ref3.onClick,
       onClick = _ref3$onClick === void 0 ? undefined : _ref3$onClick,
       _ref3$onClickNav = _ref3.onClickNav,
@@ -437,19 +447,22 @@ var SimpleImageSlider = function SimpleImageSlider(_ref3) {
     type: navStyle,
     size: navSize,
     margin: navMargin,
-    onClickNav: handleClickNav
+    onClickNav: handleClickNav,
+    color: navigationColor
   }), (loop || slideIdx < images.length - 1) && React__default['default'].createElement(ImageSliderNavigation, {
     direction: ImageSliderNavDirection.RIGHT,
     visible: showNavs && images.length > 0,
     type: navStyle,
     size: navSize,
     margin: navMargin,
-    onClickNav: handleClickNav
+    onClickNav: handleClickNav,
+    color: navigationColor
   }), React__default['default'].createElement(ImageSliderBullets, {
     visible: showBullets,
     length: images.length,
     currentIdx: slideIdx,
-    onClickBullets: handleClickBullets
+    onClickBullets: handleClickBullets,
+    bltColor: navigationColor
   })));
 };
 

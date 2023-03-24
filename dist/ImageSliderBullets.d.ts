@@ -4,6 +4,7 @@ declare type Props = {
     length: number;
     currentIdx: number;
     onClickBullets: (idx: number) => void;
+    bltColor: string;
 };
 declare const ImageSliderBullets: React.FC<Props>;
 export default ImageSliderBullets;

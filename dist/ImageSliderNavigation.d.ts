@@ -14,6 +14,7 @@ declare type ImageSliderNavigationProps = {
     direction: ImageSliderNavDirection;
     visible: boolean;
     onClickNav: (direction: ImageSliderNavDirection) => (event: React.SyntheticEvent<HTMLButtonElement>) => void;
+    color: string;
 };
 declare const ImageSliderNavigation: React.FC<ImageSliderNavigationProps>;
 export default ImageSliderNavigation;

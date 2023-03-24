@@ -6,9 +6,10 @@ type Props = {
   length: number;
   currentIdx: number;
   onClickBullets: (idx: number) => void;
+  bltColor: string;
 };
 
-const ImageSliderBullets: React.FC<Props> = ({ visible, length, currentIdx, onClickBullets }: Props) => {
+const ImageSliderBullets: React.FC<Props> = ({ visible, length, currentIdx, onClickBullets, bltColor }: Props) => {
   return (
     <>
       {visible && length > 0 && (
@@ -18,7 +19,7 @@ const ImageSliderBullets: React.FC<Props> = ({ visible, length, currentIdx, onCl
               key={`bullet-${idx}`}
               type="button"
               data-id={`bullet-${idx}`}
-              style={idx === currentIdx ? styles.BulletActive : styles.BulletNormal}
+              style={idx === currentIdx ? { ...styles.BulletActive, background: bltColor } : styles.BulletNormal}
               onClick={() => onClickBullets(idx)}
             />
           ))}

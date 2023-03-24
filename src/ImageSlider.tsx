@@ -30,6 +30,7 @@ export type SimpleImageSliderProps = {
   navSize?: number;
   navMargin?: number;
   navStyle?: ImageSliderNavStyle;
+  navigationColor?: string;
   onClick?: (idx: number, event: React.SyntheticEvent) => void;
   onClickNav?: (toRight: boolean) => void;
   onClickBullets?: (idx: number) => void;
@@ -54,6 +55,7 @@ const SimpleImageSlider: React.FC<SimpleImageSliderProps> = ({
   navSize = 50,
   navMargin = 30,
   navStyle = ImageSliderNavStyle.NORMAL,
+  navigationColor = '#FFFFFF',
   onClick = undefined,
   onClickNav = undefined,
   onClickBullets = undefined,
@@ -151,6 +153,7 @@ const SimpleImageSlider: React.FC<SimpleImageSliderProps> = ({
             size={navSize}
             margin={navMargin}
             onClickNav={handleClickNav}
+            color={navigationColor}
           />
         )}
         {(loop || slideIdx < images.length - 1) && (
@@ -161,10 +164,17 @@ const SimpleImageSlider: React.FC<SimpleImageSliderProps> = ({
             size={navSize}
             margin={navMargin}
             onClickNav={handleClickNav}
+            color={navigationColor}
           />
         )}
 
-        <ImageSliderBullets visible={showBullets} length={images.length} currentIdx={slideIdx} onClickBullets={handleClickBullets} />
+        <ImageSliderBullets
+          visible={showBullets}
+          length={images.length}
+          currentIdx={slideIdx}
+          onClickBullets={handleClickBullets}
+          bltColor={navigationColor}
+        />
       </div>
     </div>
   );

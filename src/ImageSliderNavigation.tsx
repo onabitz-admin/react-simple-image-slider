@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './ImageSliderStyle';
-import ImageNavArrowBold from './images/arrow-bold.svg';
-import ImageNavArrowNormal from './images/arrow-normal.svg';
+import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
+import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
 
 export enum ImageSliderNavStyle {
   NORMAL = 1,
@@ -20,21 +20,19 @@ type ImageSliderNavigationProps = {
   direction: ImageSliderNavDirection;
   visible: boolean;
   onClickNav: (direction: ImageSliderNavDirection) => (event: React.SyntheticEvent<HTMLButtonElement>) => void;
+  color: string;
 };
-
-const altNavArrowLeft = 'slide to left';
-const altNavArrowRight = 'slide to right';
 
 const ImageSliderNavigation: React.FC<ImageSliderNavigationProps> = (props: ImageSliderNavigationProps) => {
   return (
     <>
       {props.visible && (
         <button type="button" style={styles.getNavStyle(props.direction, props.size, props.margin)} onClick={props.onClickNav(props.direction)}>
-          <img
-            src={props.type === ImageSliderNavStyle.NORMAL ? ImageNavArrowNormal : ImageNavArrowBold}
-            style={{ width: '100%', ...(props.direction === ImageSliderNavDirection.RIGHT && { transform: 'rotate(180deg)' }) }}
-            alt={props.direction === ImageSliderNavDirection.LEFT ? altNavArrowLeft : altNavArrowRight}
-          />
+          {props.direction === ImageSliderNavDirection.RIGHT ? (
+            <ArrowForwardIosIcon fontSize={'large'} style={{ color: props.color }} />
+          ) : (
+            <ArrowBackIosIcon fontSize={'large'} style={{ color: props.color }} />
+          )}
         </button>
       )}
     </>
